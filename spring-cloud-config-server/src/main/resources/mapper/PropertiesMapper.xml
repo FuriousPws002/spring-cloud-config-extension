@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.server.data.PropertiesDao">
+
+    <insert id="insert">
+        INSERT INTO properties (application_,profile_,label_,key_,value_) VALUES
+        <foreach collection="list" item="item" separator=",">
+            (#{item.application},#{item.profile},#{item.label},#{item.key},#{item.value})
+        </foreach>
+    </insert>
+
+    <delete id="delete">
+        DELETE FROM properties WHERE application_ = #{application} AND profile_ = #{profile} AND label_ = #{label}
+    </delete>
+</mapper>
